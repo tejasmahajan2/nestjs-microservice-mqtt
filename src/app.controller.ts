@@ -29,4 +29,10 @@ export class AppController {
     console.log("user_created triggered!", data);
   }
 
+  @MessagePattern('sensors/+/temperature/+')
+  getTemperature(@Ctx() context: MqttContext) {
+    console.log(`Topic: ${context.getTopic()}`);
+    return 24
+  }
+
 }
